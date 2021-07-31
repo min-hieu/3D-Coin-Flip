@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>3D Coin</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="loading-container">
+	<img class="loading" src="./pepe.gif" alt="dancing pepe loading" />
+	<span class="loading">Loading...</span>
+</div>
+
+<button id="coinBtn" onclick="flipCoin()">Flip Me!</button>
+<canvas id="c"></canvas>
+<!-- three.min.js r110 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+
+<!-- ammo.js 20200314 -->
+<script src="https://rawcdn.githack.com/kripken/ammo.js/aab297a4164779c3a9d8dc8d9da26958de3cb778/builds/ammo.js"></script>
+
+<!-- Loaders -->
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r110/examples/js/loaders/OBJLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r110/examples/js/loaders/MTLLoader.js"></script>
+
+<!-- OrbitControls.js -->
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r110/examples/js/controls/OrbitControls.js"></script>
+
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

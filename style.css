@@ -1,0 +1,84 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+#c {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.loading-container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -5vw;
+	margin-top: -5vh;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+img.loading {
+	width: 10vw;
+	margin: auto;
+}
+
+span.loading {
+	width: 10vw;
+	font-family: "Comic Sans MS";
+	margin: auto;
+}
+
+button {
+	z-index: 2;
+	border-style: none;
+	border-radius: 2vh;
+	background-color: #961e00;
+	color: white;
+	font-family: 'Comic Sans MS';
+	font-size: min(4vh, 2vw);
+	position: absolute;
+	left: 45vw;
+	top: 10vh;
+	width: 10vw;
+	height: 10vh;
+	display: none;
+}
+
+button:hover {
+	animation: .1s ease-in-out forwards hovering;
+}
+
+button:active {
+	background-color: white;
+	color: #691e00;
+}
+
+.makeVisible {
+	display: block;
+}
+
+.makeInvisible {
+	display: none;
+}
+
+@keyframes hovering {
+	80% {
+		left: 44vw;
+		top: 9vh;
+		width: 12vw;
+		height: 12vh;
+		font-size: min(5vh, 1.5vw);
+	}
+	100% {
+		left: 44.5vw;
+		top: 9.5vh;
+		width: 11vw;
+		height: 11vh;
+		font-size: min(4.5vh, 1.5vw);
+	}
+}
