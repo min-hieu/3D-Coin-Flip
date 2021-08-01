@@ -16,6 +16,13 @@ npx live-server
 
 🧙 Nguyen (Min) Hieu [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/in/min-hieu/) [![](https://i.stack.imgur.com/tskMh.png)](https://github.com/min-hieu)
 
+## Setup
+
+```
+git clone 
+npx live-server 
+```
+
 ## Reference
 [1] [ Blue Magnificent, Intro to JavaScript 3D Physics using Ammo.js and Three.js ](https://medium.com/@bluemagnificent/intro-to-javascript-3d-physics-using-ammo-js-and-three-js-dd48df81f591)<br/>
 [2] [ Blue Magnificent, Moving Objects In JavaScript 3D Physics using Ammo.js and Three.js ](https://medium.com/@bluemagnificent/moving-objects-in-javascript-3d-physics-using-ammo-js-and-three-js-6e39eff6d9e5)<br/>
