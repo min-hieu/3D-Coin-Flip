@@ -19,7 +19,8 @@ npx live-server
 ## Setup
 
 ```
-git clone 
+git clone https://github.com/min-hieu/3D-Coin-Flip.git
+cd 3D-Coin-Flip
 npx live-server 
 ```
 
