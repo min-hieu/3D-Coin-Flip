@@ -9,7 +9,7 @@
 
 ## Embed it on Notion!
 
-
+![notion-embed](https://raw.githubusercontent.com/min-hieu/3D-Coin-Flip/master/notion.gif)
 
 ## Authors
 
