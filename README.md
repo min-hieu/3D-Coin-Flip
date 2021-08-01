@@ -4,6 +4,10 @@
 
 ✨ A hyper-realistic simulation of 3D coin being flipped ✨
 
+## Embed it on Notion!
+
+
+
 ## Authors
 
 🧙 Nguyen (Min) Hieu [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/in/min-hieu/) [![](https://i.stack.imgur.com/tskMh.png)](https://github.com/min-hieu)
