@@ -1,5 +1,8 @@
 # [3D-Coin-Flip](https://min-hieu.github.io/3D-Coin-Flip/) 🧙 
 ![version](https://img.shields.io/badge/version-1.1-brightgreen) ![](https://img.shields.io/badge/-threejs-yellowgreen) ![](https://img.shields.io/badge/-ammojs-yellow)
+
+![flip-me-baby](https://raw.githubusercontent.com/min-hieu/3D-Coin-Flip/master/Flip%20Me%20Baby.png)
+
 ## About
 
 ✨ A hyper-realistic simulation of 3D coin being flipped ✨
