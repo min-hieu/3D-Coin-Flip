@@ -1,7 +1,6 @@
 function flipCoin(){
-	console.log("flipping a coin");
 
-    let pos = {x: 0, y: 1, z: 0};
+    let pos = {x: 0, y: 2, z: 0};
 	let angVel = {x: getRandomVel(), y: getRandomVel(), z: getRandomVel()};
 	let linVel = {x: 0, y: 20, z: 0 };
     let quat = {x: getRandomOrnt(), y: getRandomOrnt(), z: getRandomOrnt(), w: 1};
@@ -9,19 +8,13 @@ function flipCoin(){
 
 	let coin = rigidBodies[0].userData.physicsBody;
 
-    let transform = new Ammo.btTransform();
-
 	// restart motion state
-    transform.setIdentity();
-    let motionState = new Ammo.btDefaultMotionState( transform );
-	coin.setMotionState(motionState);
-
-	// apply new motion state
+    let transform = new Ammo.btTransform();
     transform.setIdentity();
     transform.setOrigin( new Ammo.btVector3( pos.x, pos.y, pos.z ) );
     transform.setRotation( new Ammo.btQuaternion( quat.x, quat.y, quat.z, quat.w ) );
 
-    motionState = new Ammo.btDefaultMotionState( transform );
+    let motionState = new Ammo.btDefaultMotionState( transform );
 
 	coin.setMotionState( motionState );
 	coin.setAngularVelocity( new Ammo.btVector3( angVel.x, angVel.y, angVel.z ) );
@@ -97,7 +90,7 @@ function setupGraphics(){
     scene.add( hemiLight );
 
     // Setup DirectionalLight
-    let dirLight = new THREE.DirectionalLight( 0xffffff , 0.2);
+    let dirLight = new THREE.DirectionalLight( 0xffffff , 1);
     dirLight.position.set( 50, 30, 2 );
     scene.add( dirLight );
 	scene.add( dirLight.target );
@@ -116,7 +109,7 @@ function setupGraphics(){
     dirLight.shadow.camera.far = 13500;
 
     // Enable antialiasing
-    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer = new THREE.WebGLRenderer( { canvas, antialias: true } );
     // Setting Pixel Ratio
     renderer.setClearColor( 0x90D7EC, 1 );
     renderer.setPixelRatio( window.devicePixelRatio );
@@ -159,7 +152,6 @@ function createPlane(){
 	let plane = new THREE.Mesh(planeGeo, planeMat);
 	plane.rotation.x = Math.PI * -.5;
 
-	plane.castShadow = true;
 	plane.receiveShadow = true;
 
 	scene.add(plane)
@@ -173,8 +165,8 @@ function createPlane(){
     let motionState = new Ammo.btDefaultMotionState( transform );
 
     // Setup collision box
-	let colShape = new Ammo.btBoxShape( new Ammo.btVector3( planeSize * .5, 0.00001, planeSize * .5  )  );
-    colShape.setMargin( 0.05 );
+	let colShape = new Ammo.btBoxShape( new Ammo.btVector3( planeSize * .5, 0, planeSize * .5  )  );
+    colShape.setMargin( 0.5 );
 
     // Setup plane's physical properties
     let localInertia = new Ammo.btVector3( 0, 0, 0 );
@@ -197,8 +189,9 @@ function getRandomOrnt(){
 
 function createCoin(){
         
-    let pos = {x: 0, y: 2, z: 0};
+    let pos = {x: 0, y: 3, z: 0};
 	let angVel = {x: getRandomVel(), y: getRandomVel(), z: getRandomVel()};
+	let linVel = {x: 0, y: 20, z: 0 };
     let quat = {x: getRandomOrnt(), y: getRandomOrnt(), z: getRandomOrnt(), w: 1};
 	let radius = 2;
 	// orginal size of the coin: 2.7586400508880615 x 2.7586400508880615 x 0.4469519853591919
@@ -249,9 +242,11 @@ function createCoin(){
 		objLoader.load('./coin/Coin.obj', (coin) => {
 			coin.scale.set(resize.x, resize.y, resize.z);
 			coin.position.set(pos.x, pos.y, pos.z);
+
+			let bbox = new THREE.Box3().setFromObject(coin);
+			console.log(bbox.getSize());
 			
 			coin.castShadow = true;
-			coin.receiveShadow = true;
 
 			scene.add(coin);
 			rigidBodies.push(coin);
@@ -266,6 +261,8 @@ function createCoin(){
 
 			// Apply rigidBodies physical properties
 			coin.userData.physicsBody = body;
+			body.setAngularVelocity( new Ammo.btVector3( angVel.x, angVel.y, angVel.z ) );
+			body.setLinearVelocity( new Ammo.btVector3( linVel.x, linVel.y, linVel.z ) );
 		})
 	})
         
