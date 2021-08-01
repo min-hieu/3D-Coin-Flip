@@ -1,11 +1,3 @@
-# 3D-Coin-Flip
-A 3D coin flipping simulation :D
-
-Simply run with:
-```
-npx live-server 
-```
-
 # [3D-Coin-Flip](https://min-hieu.github.io/3D-Coin-Flip/) 🧙 
 ![version](https://img.shields.io/badge/version-1.1-brightgreen) ![](https://img.shields.io/badge/-threejs-yellowgreen) ![](https://img.shields.io/badge/-ammojs-yellow)
 ## About
