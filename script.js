@@ -16,6 +16,7 @@ function flipCoin(){
 
     let motionState = new Ammo.btDefaultMotionState( transform );
 
+	coin.setWorldTransform(transform);
 	coin.setMotionState( motionState );
 	coin.setAngularVelocity( new Ammo.btVector3( angVel.x, angVel.y, angVel.z ) );
 	coin.setLinearVelocity( new Ammo.btVector3( linVel.x, linVel.y, linVel.z ) );
@@ -198,7 +199,6 @@ function createCoin(){
 	// new size of the coin: 2 x 2 x 0.5
 	let resize = {x: 0.02544085799, y: 0.02544085799, z: 0.06066047147};
     let mass = 1;
-	let textureLoader = new THREE.TextureLoader();
 
 	// setting up physical properties
     let transform = new Ammo.btTransform();
@@ -211,7 +211,6 @@ function createCoin(){
     let motionState = new Ammo.btDefaultMotionState( transform );
 
 	let colShape = new Ammo.btBoxShape( new Ammo.btVector3( 1, 1, .125 )  );
-    colShape.setMargin( 0.5 );
 
     let localInertia = new Ammo.btVector3( 0, 0, 0 );
     colShape.calculateLocalInertia( mass, localInertia );
@@ -220,11 +219,8 @@ function createCoin(){
     let body = new Ammo.btRigidBody( rbInfo );
 
 	body.setDamping( 0.8, 0 );
-
 	body.setAngularVelocity( new Ammo.btVector3( angVel.x, angVel.y, angVel.z ) );
 
-
-    physicsWorld.addRigidBody( body );
 
     // Import 3D model of the coin
 	let mtlLoader = new THREE.MTLLoader();
@@ -240,11 +236,9 @@ function createCoin(){
 		let objLoader = new THREE.OBJLoader();
 		objLoader.setMaterials(mtl);
 		objLoader.load('./coin/Coin.obj', (coin) => {
+			
 			coin.scale.set(resize.x, resize.y, resize.z);
 			coin.position.set(pos.x, pos.y, pos.z);
-
-			let bbox = new THREE.Box3().setFromObject(coin);
-			console.log(bbox.getSize());
 			
 			coin.castShadow = true;
 
@@ -260,6 +254,7 @@ function createCoin(){
 			coinBtn.classList.add("makeVisible");
 
 			// Apply rigidBodies physical properties
+			physicsWorld.addRigidBody( body );
 			coin.userData.physicsBody = body;
 			body.setAngularVelocity( new Ammo.btVector3( angVel.x, angVel.y, angVel.z ) );
 			body.setLinearVelocity( new Ammo.btVector3( linVel.x, linVel.y, linVel.z ) );
