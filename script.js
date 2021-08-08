@@ -7,6 +7,7 @@ function flipCoin(){
 	let mass = 1;
 
 	let coin = rigidBodies[0].userData.physicsBody;
+	physicsWorld.removeRigidBody(coin);
 
 	// restart motion state
     let transform = new Ammo.btTransform();
@@ -20,6 +21,8 @@ function flipCoin(){
 	coin.setMotionState( motionState );
 	coin.setAngularVelocity( new Ammo.btVector3( angVel.x, angVel.y, angVel.z ) );
 	coin.setLinearVelocity( new Ammo.btVector3( linVel.x, linVel.y, linVel.z ) );
+
+	physicsWorld.addRigidBody(coin);
 
 }
 
